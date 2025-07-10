@@ -1,0 +1,652 @@
+[
+    {
+        "id": "9d33e9bf17605613",
+        "type": "tab",
+        "label": "Voltcraft (OPCUA)",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "331165dc70d578ac",
+        "type": "inject",
+        "z": "9d33e9bf17605613",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "033b7786016a90e8",
+                "9bdd0f20093cd114",
+                "abece912e2316d6e",
+                "0e68b0ea8776c04e"
+            ]
+        ]
+    },
+    {
+        "id": "033b7786016a90e8",
+        "type": "OpcUa-Item",
+        "z": "9d33e9bf17605613",
+        "item": "ns=2;i=2",
+        "datatype": "Float",
+        "value": "",
+        "name": "Socket b3:00:88:10 Conso",
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "04217924a2cf3016"
+            ]
+        ]
+    },
+    {
+        "id": "04217924a2cf3016",
+        "type": "OpcUa-Client",
+        "z": "9d33e9bf17605613",
+        "endpoint": "afa4d097632c6e8f",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "name": "",
+        "x": 620,
+        "y": 80,
+        "wires": [
+            [
+                "6e6b954036d2a418",
+                "6f328eb3ee9e130f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "4ad5f8053339ebe0",
+        "type": "debug",
+        "z": "9d33e9bf17605613",
+        "name": "debug 57",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9bdd0f20093cd114",
+        "type": "OpcUa-Item",
+        "z": "9d33e9bf17605613",
+        "item": "ns=2;i=3",
+        "datatype": "Float",
+        "value": "",
+        "name": "Socket b3:00:88:10 Voltage",
+        "x": 400,
+        "y": 180,
+        "wires": [
+            [
+                "c4d4adef410a1f68"
+            ]
+        ]
+    },
+    {
+        "id": "c4d4adef410a1f68",
+        "type": "OpcUa-Client",
+        "z": "9d33e9bf17605613",
+        "endpoint": "afa4d097632c6e8f",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "name": "",
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "5892957d06c0de57",
+                "6a5ca49bcda15022"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0ccfe8cd7c1bb88d",
+        "type": "debug",
+        "z": "9d33e9bf17605613",
+        "name": "debug 58",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5892957d06c0de57",
+        "type": "function",
+        "z": "9d33e9bf17605613",
+        "name": "function 2",
+        "func": "msg.payload = msg.payload[1] + \" V\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 180,
+        "wires": [
+            [
+                "0ccfe8cd7c1bb88d"
+            ]
+        ]
+    },
+    {
+        "id": "6e6b954036d2a418",
+        "type": "function",
+        "z": "9d33e9bf17605613",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload + \" W\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 80,
+        "wires": [
+            [
+                "4ad5f8053339ebe0"
+            ]
+        ]
+    },
+    {
+        "id": "abece912e2316d6e",
+        "type": "OpcUa-Item",
+        "z": "9d33e9bf17605613",
+        "item": "ns=2;i=4",
+        "datatype": "Float",
+        "value": "",
+        "name": "Socket b3:00:88:06 Conso",
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "2da1fd910f09718d"
+            ]
+        ]
+    },
+    {
+        "id": "2da1fd910f09718d",
+        "type": "OpcUa-Client",
+        "z": "9d33e9bf17605613",
+        "endpoint": "afa4d097632c6e8f",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "name": "",
+        "x": 620,
+        "y": 280,
+        "wires": [
+            [
+                "8d720ec9453de901",
+                "cbda781e6bd9e0c1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8d720ec9453de901",
+        "type": "function",
+        "z": "9d33e9bf17605613",
+        "name": "function 4",
+        "func": "msg.payload = msg.payload + \" W\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 280,
+        "wires": [
+            [
+                "b2e563bd8a2a3e1c"
+            ]
+        ]
+    },
+    {
+        "id": "b2e563bd8a2a3e1c",
+        "type": "debug",
+        "z": "9d33e9bf17605613",
+        "name": "debug 59",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "0e68b0ea8776c04e",
+        "type": "OpcUa-Item",
+        "z": "9d33e9bf17605613",
+        "item": "ns=2;i=5",
+        "datatype": "Float",
+        "value": "",
+        "name": "Socket b3:00:88:06 Voltage",
+        "x": 400,
+        "y": 380,
+        "wires": [
+            [
+                "4a077ed1c3a0c3ab"
+            ]
+        ]
+    },
+    {
+        "id": "4a077ed1c3a0c3ab",
+        "type": "OpcUa-Client",
+        "z": "9d33e9bf17605613",
+        "endpoint": "afa4d097632c6e8f",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "name": "",
+        "x": 620,
+        "y": 380,
+        "wires": [
+            [
+                "e4a62b580610a235",
+                "7c050a339aa1a6cf"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e4a62b580610a235",
+        "type": "function",
+        "z": "9d33e9bf17605613",
+        "name": "function 5",
+        "func": "msg.payload = msg.payload[1] + \" V\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 380,
+        "wires": [
+            [
+                "fe7dcc0f2a0e348f"
+            ]
+        ]
+    },
+    {
+        "id": "fe7dcc0f2a0e348f",
+        "type": "debug",
+        "z": "9d33e9bf17605613",
+        "name": "debug 60",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6f328eb3ee9e130f",
+        "type": "ui-gauge",
+        "z": "9d33e9bf17605613",
+        "name": "Socket Consumption",
+        "group": "61ba09d1e3c9ccd6",
+        "order": 1,
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Consumption (W)",
+        "units": "W",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c"
+            },
+            {
+                "from": "100",
+                "color": "#ffc800"
+            },
+            {
+                "from": "300",
+                "color": "#ea5353"
+            }
+        ],
+        "min": 0,
+        "max": "300",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 840,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "f942b525de62bf15",
+        "type": "ui-gauge",
+        "z": "9d33e9bf17605613",
+        "name": "Socket Voltage",
+        "group": "61ba09d1e3c9ccd6",
+        "order": 2,
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Voltage (V)",
+        "units": "V",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c"
+            },
+            {
+                "from": "240",
+                "color": "#ffc800"
+            },
+            {
+                "from": "300",
+                "color": "#ea5353"
+            }
+        ],
+        "min": 0,
+        "max": "300",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 940,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "6a5ca49bcda15022",
+        "type": "function",
+        "z": "9d33e9bf17605613",
+        "name": "function 6",
+        "func": "msg.payload = msg.payload[1];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 140,
+        "wires": [
+            [
+                "f942b525de62bf15"
+            ]
+        ]
+    },
+    {
+        "id": "cbda781e6bd9e0c1",
+        "type": "ui-gauge",
+        "z": "9d33e9bf17605613",
+        "name": "Socket Consumption",
+        "group": "fd5b2d054584666c",
+        "order": 1,
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Consumption (W)",
+        "units": "W",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c"
+            },
+            {
+                "from": "100",
+                "color": "#ffc800"
+            },
+            {
+                "from": "300",
+                "color": "#ea5353"
+            }
+        ],
+        "min": 0,
+        "max": "300",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 840,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7c050a339aa1a6cf",
+        "type": "function",
+        "z": "9d33e9bf17605613",
+        "name": "function 7",
+        "func": "msg.payload = msg.payload[1];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 340,
+        "wires": [
+            [
+                "6e879ff618bee13d"
+            ]
+        ]
+    },
+    {
+        "id": "6e879ff618bee13d",
+        "type": "ui-gauge",
+        "z": "9d33e9bf17605613",
+        "name": "Socket Voltage",
+        "group": "fd5b2d054584666c",
+        "order": 2,
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Voltage (V)",
+        "units": "V",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c"
+            },
+            {
+                "from": "240",
+                "color": "#ffc800"
+            },
+            {
+                "from": "300",
+                "color": "#ea5353"
+            }
+        ],
+        "min": 0,
+        "max": "300",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 940,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "afa4d097632c6e8f",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://127.0.0.1:4841",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "61ba09d1e3c9ccd6",
+        "type": "ui-group",
+        "name": "Socket B3:00:00:00:88:10",
+        "page": "2f1bee8e3dda4115",
+        "width": "3",
+        "height": "1",
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "fd5b2d054584666c",
+        "type": "ui-group",
+        "name": "Socket B3:00:00:00:88:06",
+        "page": "2f1bee8e3dda4115",
+        "width": "3",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "2f1bee8e3dda4115",
+        "type": "ui-page",
+        "name": "BLE Sniffer Voltcraft",
+        "ui": "35ea9062fc6decd6",
+        "path": "/page4",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "",
+        "order": 4,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "35ea9062fc6decd6",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "showPageTitle": true,
+        "navigationStyle": "default",
+        "titleBarStyle": "default"
+    }
+]
