@@ -97,6 +97,17 @@ This command will launch Wireshark and will start capturing the BTLE packets and
 After that, you need to launch the python script with the IDE of your choice, the script will open the *.pcapng* file, read only the *ATT, Handle 0x0014* packets (Consumption information), open an OPCUA server and publish the information on this server.<br/>
 ![image](https://github.com/user-attachments/assets/2ae98451-ae43-4f69-97b9-f9a4dde2f9cf)
 
+## Android Emulator with Virtual Machine
+The problem with using a cellphone to open the Voltcraft app is that if we close the app the data is no longer exchanged.
+To solve this problem, we could emulate an Android device with the app that works exactly as a cellphone/tablet and that won't stop communicating with the smartplug. To do that, we need to create a VM with bluetooth. <br/>
+The VM was created using Oracle VirtualBox, an Android ISO and the bluetooth driver was installed using a USB-Bluetooth Adapter. The compatible USB adapters that I recommend are:<br/>
+-	EDIMAX BT-8500  [Buy here](https://www.conrad.fr/fr/p/edimax-bt-8500-cle-bluetooth-5-0-2266203.html)
+-	Renkforce 4.0 +EDR [Buy here](https://www.conrad.fr/fr/p/cle-bluetooth-4-0-edr-renkforce-3-mbit-s-10-m-1491408.html)<br/>
+
+Follow this video to know how to emulate an Android with the Voltcraft SEM6000 app.
+<Link>
+
+
 
 
 
