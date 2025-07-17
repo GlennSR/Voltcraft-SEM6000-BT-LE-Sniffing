@@ -104,8 +104,8 @@ The VM was created using Oracle VirtualBox, an Android ISO and the bluetooth dri
 -	EDIMAX BT-8500  [Buy here](https://www.conrad.fr/fr/p/edimax-bt-8500-cle-bluetooth-5-0-2266203.html)
 -	Renkforce 4.0 +EDR [Buy here](https://www.conrad.fr/fr/p/cle-bluetooth-4-0-edr-renkforce-3-mbit-s-10-m-1491408.html)<br/>
 
-Follow this video to know how to emulate an Android with the Voltcraft SEM6000 app.
-<Link>
+Follow the video below to know how to emulate an Android with the Voltcraft SEM6000 app.<br/>
+#### [VIDEO TUTORIAL](https://www.youtube.com/watch?v=CJZ1dVJn46s)
 
 
 
